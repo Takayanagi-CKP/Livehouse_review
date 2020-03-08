@@ -46,12 +46,12 @@ Route::get('company.php', function() {
 Route::prefix('admin')->group(function() {
     // ライブハウス
     Route::get('livehouses', 'Admin\LivehouseController@index')->name('admin_livehouses');
-    Route::get('show/{id}','Admin\LivehouseController@show');
+    Route::get('show/{id}', 'Admin\LivehouseController@show');
 
     Route::get('create', 'Admin\LivehouseController@create');
     Route::post('store', 'Admin\LivehouseController@store');
 
-    Route::get('edit/{id}','Admin\LivehouseController@edit');
+    Route::get('edit/{id}', 'Admin\LivehouseController@edit');
     Route::post('update/{id}','Admin\LivehouseController@update');
 
     Route::post('destroy/{id}','Admin\LivehouseController@destroy');
@@ -59,10 +59,10 @@ Route::prefix('admin')->group(function() {
     // レビュー
     Route::get('reviews', 'Admin\ReviewController@index')->name('admin_reviews');
 
-    Route::get('review_edit/{id}','Admin\ReviewController@edit');
-    Route::post('review_update/{id}','Admin\ReviewController@update');
+    Route::get('review_edit/{id}', 'Admin\ReviewController@edit');
+    Route::post('review_update/{id}', 'Admin\ReviewController@update');
 
-    Route::post('review_destroy/{id}','Admin\ReviewController@destroy');
+    Route::post('review_destroy/{id}', 'Admin\ReviewController@destroy');
 
     // ランキング
     Route::get('ranking', 'Admin\RankingController@index')->name('admin_ranking');
