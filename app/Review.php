@@ -10,7 +10,7 @@ class Review extends Model
     const CREATED_AT = 'regist_date';
     const UPDATED_AT = 'update_time';
 
-    Public function livehouse()
+    public function livehouse()
     {
         return $this->belongsTo('App\Livehouse');
     }
