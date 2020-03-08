@@ -123,18 +123,6 @@ class Livehouse extends Model
         }
     }
 
-    // ライブハウスのいいね
-    static public function updateLivehouseLike($id)
-    {
-
-//        $voted_id = "voted_livehouse_" . $id;
-//        if (!$_COOKIE[$voted_id]) {
-//            $sql = "UPDATE livehouse SET livehouse_like = livehouse_like + 1 WHERE id = ?";
-//            parent::executeSQL($sql,[$id]);
-//            setcookie($voted_id, $voted_id, time() + 3600);
-//        }
-    }
-
     // ランキング集計用
     // レビュー数
     static public function selectLivehouseByReviewCount($limit)
