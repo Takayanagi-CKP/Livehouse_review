@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReviewRequest;
 use App\Http\Controllers\Controller;
-use App\Library\Common;
 use App\Review;
 use App\Livehouse;
 
@@ -14,12 +13,12 @@ class ReviewController extends Controller
     public function index(Request $request)
     {
         $livehouse_id = $request->id;
-        $review_type  = is_null($request->review_type) ? 1 : $request->review_type;
 
         // ライブハウス情報
         $livehouse = Livehouse::find($livehouse_id);
 
         // レビューの並び替えと絞り込み
+        $review_type  = is_null($request->review_type) ? 1 : $request->review_type;
         switch ($review_type) {
             // 全ての口コミ（新着順）
             case 1:
@@ -63,18 +62,13 @@ class ReviewController extends Controller
             $livehouse_id
         );
 
-        // 共通クラス
-        $common      = new Common;
-        $review_text = $common->showReviewText($review_type);
-
         return view('review')->with('reviews', $reviews)
             ->with('livehouse', $livehouse)
             ->with('around_livehouse', $around_livehouse)
             ->with('newly_reviews', $newly_reviews)
             ->with('review_count', $review_count)
-            ->with('review_text', $review_text)
-            ->with('is_player_review', $is_player_review)
-            ->with('common', $common);
+            ->with('review_type', $review_type)
+            ->with('is_player_review', $is_player_review);
     }
 
     // レビューの投稿

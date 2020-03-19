@@ -29,7 +29,7 @@
                 ID : {{ $review->id }}<br>
                 <i class='fas fa-cube'></i> {{ $review->livehouse->region }} / <a href="{{ route('review') }}/?id={{ $review->livehouse->id }}" target="_blank">{{ $review->livehouse->livehouse_name }}</a><br>
                 <i class="fas fa-user"></i> {{ $review->user_name }} / {{ Config::get('const.USER_TYPE')[$review->user_type] }}のレビュー<br>
-                評価：<span class="text-warning">{!! $common->showStarIconByPoint($review->points) !!}</span> {{ $review->points }}<br>
+                評価：<span class="text-warning">{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!}</span> {{ $review->points }}<br>
                 「{{ $review->title }}」<br>
                 <i class="far fa-comment"></i> {!! nl2br(e($review->comments)) !!}<br>
                 <i class="fas fa-heart text-danger"></i> {{ $review->comments_like }}　投稿日：{{ $review->regist_date->format('Y-m-d') }}

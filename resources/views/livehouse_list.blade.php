@@ -66,8 +66,8 @@
                                                         <i class='fas fa-cube'></i> {{ $review->livehouse->livehouse_name }}
                                                     </a><br>
                                                     <!-- 評価 -->
-                                                    {!! $common->showFaceIconByPoint($review->points) !!}&nbsp;&nbsp;
-                                                    <span class='red'>{!! $common->showStarIconByPoint($review->points) !!} {{ $review->points }}<br></span>
+                                                    {!! \App\Enums\CommonStatus::getFaceIcon($review->points) !!}
+                                                    <span class='red'>{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!} {{ $review->points }}<br></span>
                                                     <!-- タイトル -->
                                                     「{{ $review->title }}」<br>
                                                     <!-- コメント -->

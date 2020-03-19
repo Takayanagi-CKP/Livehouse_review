@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReviewRequest;
 use App\Http\Controllers\Controller;
-use App\Library\Common;
 use App\Review;
 
 class ReviewController extends Controller
@@ -44,16 +43,12 @@ class ReviewController extends Controller
         // その他のレビュー数
         $total_review_count_other = Review::countReviewTotalByOther();
 
-        // 共通クラス
-        $common = new Common;
-
         return view('admin/reviews')->with('reviews', $reviews)
             ->with('keyword', $keyword)
             ->with('total_review_count', $total_review_count)
             ->with('total_review_count_audience', $total_review_count_audience)
             ->with('total_review_count_player', $total_review_count_player)
-            ->with('total_review_count_other', $total_review_count_other)
-            ->with('common', $common);
+            ->with('total_review_count_other', $total_review_count_other);
     }
 
     public function edit($id)

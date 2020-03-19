@@ -117,11 +117,8 @@
                 </div>
                 <div class="detail-discription__middle">
                     <p class="comment-recommend">
-                        {!! $common->showStarIconByPoint($livehouse->average_points) !!}
-                        @if ($livehouse->average_points)
-
-                        {{ $livehouse->average_points }}
-                        @endif
+                        {!! \App\Enums\CommonStatus::getStarIcon($livehouse->average_points) !!}
+                        {{ $livehouse->average_points ? $livehouse->average_points : '' }}
                     </p>
                     <p class="comment-like">
                         <i class="fas fa-heart"></i>{{ $livehouse->livehouse_like }}
@@ -199,7 +196,7 @@
         <!-- 口コミタブ -->
         <div class="main-center">
             <div class="detail-tab__comment">
-                <h2 class="detail__page-title"><i class="far fa-comment"></i> {{ $review_text }}</h2>
+                <h2 class="detail__page-title"><i class="far fa-comment"></i> {!! \App\Enums\CommonStatus::getReviewText($review_type) !!}</h2>
                 @if ($review_count)
                     <p class="page-sort__item page-sort__item-text"><i class="fas fa-user"></i>レビュー数：{{ $review_count }}件</p>
                     <ul class="page-sort__list">
@@ -218,7 +215,7 @@
                             <div class='comment-item__top'>
                                 <!-- 顔アイコン・ユーザーネーム -->
                                 <p class='comment-name'>
-                                    {!! $common->showFaceIconByPoint($review->points) !!}
+                                    {!! \App\Enums\CommonStatus::getFaceIcon($review->points) !!}
                                     {{ $review->user_name }}<span class='small-text'>さん</span>
                                 </p>
                                 @if ($review->official_flg)
@@ -231,7 +228,9 @@
                             </div>
                             <div class='detail__comment'>
                                 <!-- 評価 -->
-                                <p class='comment-recommend'>{!! $common->showStarIconByPoint($review->points) !!}{{ $review->points }}</p>
+                                <p class='comment-recommend'>
+                                    {!! \App\Enums\CommonStatus::getStarIcon($review->points) !!}{{ $review->points }}
+                                </p>
                                 <!-- タイトル -->
                                 <p class='comment-item__title'>「{{ $review->title }}」</p>
                                 <!-- コメント -->
@@ -346,7 +345,7 @@
                                         <a href='{{ route('review') }}?id={{ $livehouse->id }}'><i class='fas fa-cube'></i> {{ $livehouse->livehouse_name }}</a><br>
                                         <!-- レビューが3件以上の場合は評価とレビュー数を表示 -->
                                         @if ($livehouse->review_count >= 3)
-                                            <span class='yellow'>{!! $common->showStarIconByPoint($livehouse->average_points) !!}</span>
+                                            <span class='yellow'>{!! \App\Enums\CommonStatus::getStarIcon($livehouse->average_points) !!}</span>
                                             {{ $livehouse->average_points }}<br>
                                             <i class='far fa-comment green'></i> {{ $livehouse->review_count }}件のレビュー
                                         @elseif ($livehouse->review_count >= 1)
@@ -459,8 +458,8 @@
                             <!-- ライブハウス名 -->
                             <a href='{{ route('review') }}?id={{ $review->livehouse_id }}'><i class='fas fa-cube'></i> {{ $review->livehouse->livehouse_name }}</a><br>
                             <!-- 評価 -->
-                            {!! $common->showFaceIconByPoint($review->points) !!}
-                            <span class='red'>{!! $common->showStarIconByPoint($review->points) !!} {{ $review->points }}<br></span>
+                            {!! \App\Enums\CommonStatus::getFaceIcon($review->points) !!}
+                            <span class='red'>{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!} {{ $review->points }}<br></span>
                             <!-- タイトル -->
                             「{{ $review->title }}」<br>
                             <!-- コメント -->

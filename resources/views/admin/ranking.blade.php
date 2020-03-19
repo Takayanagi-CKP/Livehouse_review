@@ -94,7 +94,7 @@
                                         {{ $loop->iteration }} 位
                                     </th>
                                     <td>
-                                        <span class="text-warning">{!! $common->showStarIconByPoint($livehouse->average_points) !!}</span> <span class="lead">{{ $livehouse->average_points }}</span>
+                                        <span class="text-warning">{!! \App\Enums\CommonStatus::getStarIcon($livehouse->average_points) !!}</span> <span class="lead">{{ $livehouse->average_points }}</span>
                                     </td>
                                     <td>
                                         {{ $livehouse->region }} /
@@ -124,7 +124,7 @@
                                 <i class='fas fa-cube'></i> {{ $review->livehouse->region }} /
                                 <a href="../review/?id={{ $review->livehouse->id }}" target="_blank">{{ $review->livehouse->livehouse_name }}</a><br>
                                 <i class="fas fa-user"></i> {{ $review->user_name }}<br>
-                                評価：<span class="text-warning">{!! $common->showStarIconByPoint($review->points) !!}</span> {{ $review->points }}<br>
+                                評価：<span class="text-warning">{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!}</span> {{ $review->points }}<br>
                                 「{{ $review->title }}」<br>
                                 <i class="far fa-comment"></i> {!! nl2br(e($review->comments)) !!}<br>
                                 投稿日：{{ $review->regist_date->format('Y-m-d') }}
@@ -150,7 +150,7 @@
                                         <i class='fas fa-cube'></i> {{ $review->livehouse->region }} /
                                         <a href="../review/?id={{ $review->livehouse->id }}" target="_blank">{{ $review->livehouse->livehouse_name }}</a><br>
                                         <i class="fas fa-user"></i> {{ $review->user_name }} / {{ Config::get('const.USER_TYPE')[$review->user_type] }}のレビュー<br>
-                                        評価：<span class="text-warning">{!! $common->showStarIconByPoint($review->points) !!}</span> {{ $review->points }}<br>
+                                        評価：<span class="text-warning">{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!}</span> {{ $review->points }}<br>
                                         「{{ $review->title }}」<br>
                                         <i class="far fa-comment"></i> {!! nl2br(e($review->comments)) !!}<br>
                                         投稿日：{{ $review->regist_date->format('Y-m-d') }}

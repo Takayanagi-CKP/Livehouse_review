@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Library\Common;
 use App\Livehouse;
 use App\Review;
 
@@ -36,9 +35,6 @@ class RankingController extends Controller
         // レビューの合計
         $total_review_count = Review::countReviewTotal();
 
-        // 共通クラス
-        $common = new Common;
-
         return view('ranking')->with('ranking_review_count', $ranking_review_count)
             ->with('ranking_livehouse_like', $ranking_livehouse_like)
             ->with('ranking_audience_comments_like', $ranking_audience_comments_like)
@@ -46,7 +42,6 @@ class RankingController extends Controller
             ->with('ranking_average_points', $ranking_average_points)
             ->with('newly_reviews', $newly_reviews)
             ->with('total_livehouse_count', $total_livehouse_count)
-            ->with('total_review_count', $total_review_count)
-            ->with('common', $common);
+            ->with('total_review_count', $total_review_count);
     }
 }

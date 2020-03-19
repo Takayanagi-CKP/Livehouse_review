@@ -105,7 +105,7 @@
                                 </h4>
                                 <small>
                                     <i class='fas fa-cube'></i> <a href="../review/?id={{ $review->livehouse->id }}" target="_blank">{{ $review->livehouse->livehouse_name }}</a><br>
-                                    <i class="fas fa-user"></i> {{ $review->user_name }} <span class='red'>{!! $common->showStarIconByPoint($review->points) !!} {{ $review->points }}</span><br>
+                                    <i class="fas fa-user"></i> {{ $review->user_name }} <span class='red'>{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!} {{ $review->points }}</span><br>
                                     「{{ $review->title }}」<br>
                                     <i class="far fa-comment has-text-primary"></i> <span class='has-text-grey'>{!! nl2br(e($review->comments)) !!}</span><br>
                                     投稿日：{{ $review->regist_date->format('Y-m-d') }}
@@ -132,7 +132,7 @@
                                 </h4>
                                 <small>
                                     <i class='fas fa-cube'></i> <a href="../review/?id={{ $review->livehouse->id }}" target="_blank">{{ $review->livehouse->livehouse_name }}</a><br>
-                                    <i class="fas fa-user"></i> {{ $review->user_name }} <span class='red'>{!! $common->showStarIconByPoint($review->points) !!} {{ $review->points }}</span><br>
+                                    <i class="fas fa-user"></i> {{ $review->user_name }} <span class='red'>{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!} {{ $review->points }}</span><br>
                                     「{{ $review->title }}」<br>
                                     <i class="far fa-comment has-text-primary"></i> <span class='has-text-grey'>{!! nl2br(e($review->comments)) !!}</span><br>
                                     投稿日：{{ $review->regist_date->format('Y-m-d') }}
@@ -167,7 +167,7 @@
                                         <i class="fas fa-cube has-text-grey"></i> {{ $livehouse->region }} / <a href='{{ route('review') }}?id={{ $livehouse->id }}' target='blank'>{{ $livehouse->livehouse_name }}</a><br>
                                     </p>
                                     <p class="subtitle is-6">
-                                        評価：<span class='yellow'>{!! $common->showStarIconByPoint($livehouse->average_points) !!}</span> {{ $livehouse->average_points }}<br>
+                                        評価：<span class='yellow'>{!! \App\Enums\CommonStatus::getStarIcon($livehouse->average_points) !!}</span> {{ $livehouse->average_points }}<br>
                                         <i class='fas fa-heart icon-red'></i> {{ $livehouse->livehouse_like }}
                                         <i class='fas fa-users has-text-info'></i> {{ $livehouse->capacity }}人
                                     </p>
@@ -203,7 +203,7 @@
                                         @if ($loop->iteration <= 3)
                                             <i class='fas fa-trophy icon-yellow'></i>
                                         @endif
-                                        {{ $loop->iteration }} 位 <span class='yellow'>{!! $common->showStarIconByPoint($livehouse->average_points) !!}</span> {{ $livehouse->average_points }}<br>
+                                        {{ $loop->iteration }} 位 <span class='yellow'>{!! \App\Enums\CommonStatus::getStarIcon($livehouse->average_points) !!}</span> {{ $livehouse->average_points }}<br>
                                         <i class="fas fa-cube has-text-grey"></i> {{ $livehouse->region }} / <a href='{{ route('review') }}?id={{ $livehouse->id }}' target='blank'>{{ $livehouse->livehouse_name }}</a>
                                     </p>
                                     <p class="subtitle is-6">
@@ -323,8 +323,8 @@
                                                 </a><br>
                                                 <small>
                                                     <!-- 評価 -->
-                                                    {!! $common->showFaceIconByPoint($review->points) !!}&nbsp;&nbsp;
-                                                    <span class='red'>{!! $common->showStarIconByPoint($review->points) !!} {{ $review->points }}<br></span>
+                                                    {!! \App\Enums\CommonStatus::getFaceIcon($review->points) !!}
+                                                    <span class='red'>{!! \App\Enums\CommonStatus::getStarIcon($review->points) !!} {{ $review->points }}<br></span>
                                                     <!-- タイトル -->
                                                     「{{ $review->title }}」<br>
                                                     <!-- コメント -->
